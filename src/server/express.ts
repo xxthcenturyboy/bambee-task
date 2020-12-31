@@ -137,46 +137,6 @@ async function expressConfig(app: Express) {
   app.use(csrf);
 
   /**
-   * Redirect HTTP to HTTPS (if enabled)
-   */
-  // if (settings.REDIRECT_HTTPS) {
-  //   app.use('*', (req, res, next) => {
-  //     if (req.protocol !== 'https') {
-  //       return res.redirect(`https://${req.headers.host}${req.url}`);
-  //     }
-  //     return next();
-  //   });
-  // }
-
-  /**
-   * Check basic auth if enabled
-   */
-  // app.use('*', (req, res, next) => {
-  //   // redirect www to non-www
-  //   if (/^www\.bambeetask\.com/.test(req.hostname)) {
-  //     const next = `https://bambeetask.com${req.originalUrl}`;
-
-  //     return res.redirect(next);
-  //   }
-
-  //   if (settings.BASIC_AUTH) {
-  //     const b64auth = (req.headers.authorization || '').split(' ')[1] || '';
-  //     const [login, password] =
-  //       new Buffer(b64auth, 'base64').toString().split(':');
-  //     const [l, p] = settings.BASIC_AUTH.split(':');
-
-  //     if (!login || !password || login !== l || password !== p) {
-  //       res.set('WWW-Authenticate', 'Basic realm="web"');
-  //       res.status(401).send('Authorization required.');
-  //     } else {
-  //       next();
-  //     }
-  //   } else {
-  //     next();
-  //   }
-  // });
-
-  /**
    * API Routes - must load before index route
    * Loaded after csrf - all routes will utilize csrf
    */

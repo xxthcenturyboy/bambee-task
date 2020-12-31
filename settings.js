@@ -20,7 +20,7 @@ const settings = Object.assign({}, {
   APP_PORT: process.env.PORT || 3000,
   DEBUG: isDebug(),
   REDIS_URI: process.env.REDIS_URI || 'redis://redis:6379/0',
-  SMTP_USERNAME: process.env.SMTP_USERNAME || 'postmaster@mg.bambeetask.com',
+  SMTP_USERNAME: process.env.SMTP_USERNAME || 'postmaster@mg.advancedbasics.com',
   SMTP_PASSWORD: process.env.SMTP_PASSWORD,
   SENDGRID_API_USERNAME: process.env.SENDGRID_API_USERNAME,
   SENDGRID_KEY: process.env.SENDGRID_KEY || '',
