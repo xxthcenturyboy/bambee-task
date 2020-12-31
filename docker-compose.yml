@@ -1,0 +1,42 @@
+services:
+    redis:
+        image: redis
+        ports:
+            - "6379:6379"
+    postgres:
+        image: postgres:13-alpine
+        volumes:
+          - "db-data:/var/lib/postgresql/data/pgdata"
+        #   - $PWD/scripts/db:/host-db
+        environment:
+            PGDATA: "/var/lib/postgresql/data/pgdata"
+            POSTGRES_USER: "pguser"
+            POSTGRES_PASSWORD: "password"
+            POSTGRES_DB: "app"
+        ports:
+            - "5433:5432"
+    web:
+        tty: true
+        stdin_open: true
+        build:
+            context: .
+            dockerfile: ./scripts/docker/Dockerfile
+        command: "/bin/bash"
+        volumes:
+            - $PWD/:/app
+        ports:
+            - "3000:3000"
+            - "9229:9229"
+        depends_on:
+            - redis
+            - postgres
+        links:
+            - redis
+            - postgres
+        environment:
+            - NODE_ENV=development
+            - ROOT_DIR=/app
+            - NODE_PATH=/usr/local/lib/node_modules/
+            - POSTGRES_URI=postgres://pguser:password@postgres:5432/app?sslmode=disable'
+volumes:
+  db-data:
