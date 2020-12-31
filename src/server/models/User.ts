@@ -11,7 +11,8 @@ import {
   verify
 } from 'server/lib/crypt/hashing';
 
-import Email from 'server/models/Email';
+import Email from './Email';
+import Task from './Task';
 import { maxBy } from 'lodash';
 
 @Table({
@@ -29,6 +30,9 @@ export default class User extends Model<User> {
 
   @HasMany(() => Email)
   Emails: Email[];
+
+  @HasMany(() => Task)
+  Tasks: Task[];
 
   @Column({ field: 'hashword', type: DataType.STRING })
   hashword: string;
@@ -51,6 +55,13 @@ export default class User extends Model<User> {
       || this.Emails
       || await Email.findAllByUserId(this.id);
     return this.Emails;
+  }
+
+  async getTasks(): Promise<Task[]> {
+    this.Tasks = null
+      || this.Tasks
+      || await Task.findAllIncompleteByUserId(this.id);
+    return this.Tasks;
   }
 
   async getEmail(email: string): Promise<Email | null> {

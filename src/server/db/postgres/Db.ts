@@ -4,6 +4,7 @@ import chalk from 'chalk';
 import winston from 'winston';
 import pgUrl2object, { PgUrlObject } from 'shared/pgUrl2Object';
 import Email from 'server/models/Email';
+import Task from 'server/models/Task';
 import User from 'server/models/User';
 
 export class Db {
@@ -41,19 +42,35 @@ export class Db {
     return this.sequelize || null;
   }
 
+  private async _handleExtenstions(): Promise<void> {
+    if (!this.sequelize) {
+      return;
+    }
+    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS "pgcrypto";');
+    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS "fuzzystrmatch";');
+    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
+  }
+
+  private async _loadModels(): Promise<void> {
+    if (!this.sequelize) {
+      return;
+    }
+
+    await this.sequelize.addModels([
+      Email,
+      Task,
+      User,
+    ]);
+  }
+
   async initialize(): Promise<void> {
     if (!this.sequelize) {
       throw new Error('Sequelize failed to instantiate');
     }
 
-    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS "pgcrypto";');
-    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS "fuzzystrmatch";');
-    await this.sequelize.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp";');
+    await this._handleExtenstions();
 
-    await this.sequelize.addModels([
-      Email,
-      User,
-    ]);
+    await this._loadModels();
 
     while (this.retries) {
       try {
