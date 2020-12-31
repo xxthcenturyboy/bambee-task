@@ -153,8 +153,8 @@ async function expressConfig(app: Express) {
    */
   // app.use('*', (req, res, next) => {
   //   // redirect www to non-www
-  //   if (/^www\.advancedbasics\.com/.test(req.hostname)) {
-  //     const next = `https://advancedbasics.com${req.originalUrl}`;
+  //   if (/^www\.bambeetask\.com/.test(req.hostname)) {
+  //     const next = `https://bambeetask.com${req.originalUrl}`;
 
   //     return res.redirect(next);
   //   }

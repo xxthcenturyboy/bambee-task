@@ -70,7 +70,7 @@ export default class User extends Model<User> {
   }
 
   static async registerAndCreateFromEmail(email: string, password: string): Promise<User> {
-    if (!email.endsWith('@advancedbasics.com')) {
+    if (!email.endsWith('@bambee.com')) {
       try {
         await Email.assertEmailIsValid(email);
       } catch (err) {

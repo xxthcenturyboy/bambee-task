@@ -13,7 +13,7 @@ export const AppWrapper = styled.div<{ hasGradient?: boolean }>`
   background-color: inherit;
   ${(p) => {
     if (p.hasGradient) {
-      return `background-image: linear-gradient(64deg,hsl(242,60%,47%) 0%,hsl(205,100%,57%) 73%);`;
+      return `background-image: linear-gradient(64deg,rgb(122,43,214) 0%,rgb(153,36,213) 73%);`;
     }
   }}
 `;

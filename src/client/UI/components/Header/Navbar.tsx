@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { RootState } from 'client/index';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import NavbarLinks from './NavbarLinks';
 import Logo from './Logo';
@@ -39,18 +41,18 @@ const BoxedWrapper = styled.div`
   }
 `;
 
-const Toggle = styled.div`
+const Toggle = styled.div<{ hidden: boolean }>`
   display: none;
   height: 100%;
   cursor: pointer;
   padding: 0 12px;
 
   @media (max-width: 768px) {
-    display: flex;
+    display: ${p => p.hidden ? 'none' : 'flex'};
   }
 `;
 
-const Navbox = styled.div<{ open: boolean }>`
+const Navbox = styled.div<{ open: boolean}>`
   display: flex;
   height: 100%;
   justify-content: flex-end;
@@ -105,13 +107,17 @@ const Hamburger = styled.div<{ open: boolean }>`
 `;
 
 const Navbar: React.FC = () => {
+  const location = useSelector((state: RootState) => state.router.location);
   const [navbarOpen, setNavbarOpen] = useState<boolean>(false);
+
+  const { pathname } = location;
+  const hideToggle = pathname === '/';
 
   return (
     <Navigation>
       <BoxedWrapper>
         <Logo isOpen={navbarOpen} setMenuState={setNavbarOpen} />
-        <Toggle onClick={() => setNavbarOpen(!navbarOpen)}>
+        <Toggle onClick={() => setNavbarOpen(!navbarOpen)} hidden={hideToggle}>
           <Hamburger open={navbarOpen} />
         </Toggle>
         <Navbox open={navbarOpen}>
