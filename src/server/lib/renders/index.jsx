@@ -43,7 +43,7 @@ function Index({ preloadedState, path, csrfToken, settings }) {
         <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v18/KFOkCnqEu92Fr1MmgVxIIzIXKMny.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
         <link rel="stylesheet" href="/styles.css" />
-        <title>{COMPANY_NAME}</title>
+        <title>{APP_NAME}</title>
         <meta name="description" content={siteDescription} />
         <meta name="keywords" content="advanced basics abx nodejs express react" />
         <meta name="robots" content="index,follow" />
