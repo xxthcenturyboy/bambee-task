@@ -12,7 +12,9 @@ yarn install
 # download and build the docker images, and build the app
 docker-compose up -d
 
-# starts nodemon
+# start nodemon
+# If this fails on init, run the Terminal #2 commands and then re-run this command
+# For some reason, the webpack initial build can fail to create the dist folder required to serve the files
 make serve
 ```
 
