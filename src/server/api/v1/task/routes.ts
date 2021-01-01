@@ -13,7 +13,7 @@ const router = Router();
 
 router.all('/*', [ensureLoggedIn]);
 
-router.get('/list/:status/:sortField/:sortDir/:limit/:offset', taskList);
+router.get('/list/:status/:sortField/:sortDir/:offset/:limit', taskList);
 router.get('/:id', taskDetail);
 
 router.post('/', taskCreate);

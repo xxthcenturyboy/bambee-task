@@ -9,6 +9,7 @@ export { TasksState };
 
 export const initialState: TasksState = {
   tasks: [],
+  totalTaskCount: 0,
   isFetchingTasks: false,
   fetchingTasksError: '',
   sortField: TaskPaginatonDefaults.sortField,
@@ -30,7 +31,8 @@ const reducer = (state: TasksState = initialState, action: Action | LocationChan
 
     case getType(actions.requestList.success): return {
       ...state,
-      tasks: action.payload,
+      tasks: action.payload.rows,
+      totalTaskCount: action.payload.count,
       isFetchingTasks: false,
       fetchingTasksError: '',
     };
@@ -97,6 +99,21 @@ const reducer = (state: TasksState = initialState, action: Action | LocationChan
       ...state,
       isFetchingTasks: true,
       fetchingTasksError: action.payload,
+    };
+
+    case getType(actions.setTaskStatus): return {
+      ...state,
+      statusFilter: action.payload
+    };
+
+    case getType(actions.setOffset): return {
+      ...state,
+      offset: action.payload
+    };
+
+    case getType(actions.setLimit): return {
+      ...state,
+      limit: action.payload
     };
 
     default: return state;

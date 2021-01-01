@@ -1,7 +1,6 @@
 import getCSRFToken from 'client/lib/getCSRFToken';
 import { handleNon200Response, handleFetchError } from 'client/lib/api/v1/errorHandlers';
 import { TaskListResponse, TaskStatus } from 'shared/types/tasks';
-import { Task } from 'client/Task/types';
 
 export async function getTaskList(
   status: TaskStatus,
@@ -9,9 +8,9 @@ export async function getTaskList(
   sortDir: string,
   limit: number,
   offset: number
-): Promise<Task[]> {
+): Promise<TaskListResponse> {
   try {
-    const url = `/api/v1/task/list${status}/${sortField}/${sortDir}/${limit}/${offset}`;
+    const url = `/api/v1/task/list/${status}/${sortField}/${sortDir}/${limit}/${offset}`;
     const opts: RequestInit = {
       method: 'GET',
       credentials: 'same-origin',
@@ -26,7 +25,7 @@ export async function getTaskList(
     }
     const json: TaskListResponse = await res.json();
 
-    return json.rows;
+    return json;
   } catch (err) {
     throw handleFetchError(err);
   }

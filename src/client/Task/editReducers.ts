@@ -7,7 +7,7 @@ export type Action = ActionType<typeof actions>;
 export { EditTaskState };
 
 export const initialState: EditTaskState = {
-  task: null,
+  task: { name: '', description: '', dueDate: '' },
   isFetchingTask: false,
   fetchTaskError: '',
   isEditing: false
@@ -38,7 +38,7 @@ const reducer = (state: EditTaskState = initialState, action: Action | LocationC
     case getType(actions.setTask): return {
       ...state,
       task: action.payload,
-      isEditing: action.payload ? true : false,
+      isEditing: action.payload.id ? true : false,
     };
 
     case getType(actions.setName): return {

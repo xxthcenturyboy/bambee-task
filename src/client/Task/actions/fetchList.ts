@@ -1,13 +1,13 @@
 import { createAsyncAction } from 'typesafe-actions';
 import { Task } from 'client/Task/types';
 import { getTaskList } from 'client/lib/api/v1/task';
-import { TaskStatus } from 'shared/types/tasks';
+import { TaskStatus, TaskListResponse } from 'shared/types/tasks';
 
 export const requestList = createAsyncAction(
   'TASK:REQUEST_TASK_LIST',
   'TASK:REQUEST_TASK_LIST_SUCCESS',
   'TASK:REQUEST_TASK_LIST_FAILURE'
-)<undefined, Task[], string>();
+)<undefined, TaskListResponse, string>();
 
 export default (
   status: TaskStatus,

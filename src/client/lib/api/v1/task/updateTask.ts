@@ -2,7 +2,7 @@ import getCSRFToken from 'client/lib/getCSRFToken';
 import { handleNon200Response, handleFetchError } from 'client/lib/api/v1/errorHandlers';
 import { Task } from 'client/Task/types';
 
-export async function updateTask(taskId: string, name?: string, description?: string, dueDate?: Date): Promise<Task> {
+export async function updateTask(taskId: string, name?: string, description?: string, dueDate?: string): Promise<Task> {
   try {
     const url = `/api/v1/task/`;
     const opts: RequestInit = {
