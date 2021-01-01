@@ -40,7 +40,7 @@ const settings = Object.assign({}, {
   NODE_ENV: process.env.NODE_ENV || 'development',
   WS_HOST: process.env.WS_HOST || 'localhost:3000',
   S3_UPLOAD_BUCKET: process.env.S3_UPLOAD_BUCKET || '',
-  isProduction: this.APP_HOST === 'https://advancedbasics.com',
+  isProduction: this.APP_HOST === 'https://bambeetask.com',
   JWT_SECRET: process.env.JWT_SECRET || '12345',
   SESSION_SECRET: process.env.SESSION_SECRET || '12345',
 });

@@ -6,14 +6,8 @@ import MUIVisibilityOff from '@material-ui/icons/VisibilityOff';
 import MUIVisibility from '@material-ui/icons/Visibility';
 import { BeatLoader } from 'react-spinners';
 
-// const highlightblue = '#2135c4';
-const highlightblue = 'rgb(75, 148, 226)';
-// const highlightblue = 'hsl(203, 100%, 58%)';
+const brandColor = 'rgb(72 29 114)';
 export const grayColor = 'rgb(74, 74, 74)';
-
-const ThemeLight = 'rgb(36, 96, 213)';
-const ThemeDark = 'rgb(10, 87, 143)';
-const TextDark = '#152e5e';
 
 const bounce = keyframes`
   0%, 20%, 50%, 80%, 100% {
@@ -94,12 +88,8 @@ export const Body = styled.div<{ isEnterPassword?: boolean; }>`
   }
 `;
 
-export const MastHead = styled.div<{ modal?: boolean }>`
-  ${p => p.modal ?
-    `background-image: linear-gradient(120deg, ${ThemeDark}, ${ThemeLight});` :
-    'background-color: hsl(223, 53%, 23%);'
-  };
-  background-color: ${p => p.modal ? 'hsl(223, 70%, 42%)' : 'hsl(0, 0%, 95%)'};
+export const MastHead = styled.div`
+  background-color: hsl(0, 0%, 95%)};
   width: 100%;
   display: flex;
   align-items: center;
@@ -114,14 +104,14 @@ export const Footer = styled.div`
   height: 38px;
 `;
 
-export const FooterTxt = styled.div<{ modal?: boolean; hasBackButton?: boolean; }>`
+export const FooterTxt = styled.div<{ hasBackButton?: boolean; }>`
   // text-align: center;
   // padding: 0px 0 15px;
   margin: 1 0 0;
   margin-left: ${p => p.hasBackButton ? '-12px' : '0'};
   text-align: left;
   font-size: 14px;
-  color: ${p => p.modal ? ThemeLight : highlightblue};
+  color: ${brandColor};
   // color: rgb(75,148,226);
   font-family: Roboto;
   font-weight: 700;
@@ -152,8 +142,8 @@ export const ArrowFwd = styled(MUIChevronRight as any) `
   transform: translate(5px, -7px);
 `;
 
-export const Title = styled.h2<{ modal?: boolean; }>`
-  color: ${p => p.modal ? ThemeLight : highlightblue};
+export const Title = styled.h2`
+  color: ${brandColor};
   padding: 0 40px;
   font-size: 30px;
   font-weight: 300;
@@ -238,8 +228,8 @@ export const TextInputErrpr = styled.span`
 `;
 
 export const Logo = styled.img`
-  max-width: 145px;
-  width: 145px;
+  max-width: 60px;
+  width: 100%;
   margin: 25 0;
 `;
 
@@ -254,7 +244,7 @@ export const Tabs = styled.div`
 export const Tab = styled.div<{ active: boolean; }>`
   cursor: pointer;
   flex: 0 0 50%;
-  border-bottom: ${p => p.active ? `1px solid ${highlightblue}` : `1px solid hsl(0, 0%, 87%)`};
+  border-bottom: ${p => p.active ? `1px solid ${brandColor}` : `1px solid hsl(0, 0%, 87%)`};
   // border-bottom: ${p => p.active ? '2px solid hsl(0, 0%, 100%)' : '2px solid hsl(211, 85%, 45%)'};
   display: flex;
   align-items: center;
@@ -289,11 +279,11 @@ export const BtnWrapper = styled.div`
   text-align: center;
 `;
 
-export const SubmitButton = styled.button<{ modal?: boolean; }>`
+export const SubmitButton = styled.button`
   // background-color: #1C2E5B;
   box-shadow: 2px 3px 8px 0 hsla(0, 0%, 0%, 0.4);
-  background-image: linear-gradient(120deg, ${ThemeDark}, ${ThemeLight});
-  font-size: ${p => p.modal ? `20px` : `20px`};
+  background-image: linear-gradient(120deg,rgb(122 43 214),rgb(153 36 213));
+  font-size: 20px;
 	font-weight: bold;
 	text-align: center;
 	color: hsl(0, 0%, 100%);
@@ -349,7 +339,7 @@ export const SuccessText = styled.div`
 `;
 
 export const Loader = styled(BeatLoader).attrs({
-  color: highlightblue,
+  color: brandColor,
   size: 20,
   margin: '2px'
 })`
@@ -382,13 +372,13 @@ export const VisibilityOn = styled(MUIVisibility as any) `
 export const DidYouMeanTo = styled.span`
   width: 100%;
   cursor: pointer;
-  color: ${highlightblue};
+  color: ${brandColor};
 `;
 
 export const formStyles = {
   labelCSS: {
     '&$focused': {
-      color: `${highlightblue} !important`
+      color: `${brandColor} !important`
     },
     color: `${grayColor} !important`,
   },
@@ -398,10 +388,10 @@ export const formStyles = {
       backgroundColor: grayColor
     },
     '&:after': {
-      backgroundColor: `${highlightblue} !important`
+      backgroundColor: `${brandColor} !important`
     },
     '&:hover:not(disabled):before': {
-      backgroundColor: `${highlightblue} !important`
+      backgroundColor: `${brandColor} !important`
     }
   },
   input: {

@@ -2,10 +2,10 @@
 import React from 'react';
 import settings from 'settings';
 import buildVersion from 'server/lib/utils/buildVersion';
-import { COMPANY_NAME } from 'shared/constants';
+import { APP_NAME } from 'shared/constants';
 
 function Index({ preloadedState, path, csrfToken, settings }) {
-  const siteDescription = `${COMPANY_NAME} SPA`
+  const siteDescription = `${APP_NAME} Make tasks and stuff.`
 
   const ieBouncer = `
   function isIE() {
@@ -31,7 +31,6 @@ function Index({ preloadedState, path, csrfToken, settings }) {
         <link rel="preload" href={`/bundles/main.${buildVersion()}.js`} as="script" />
 
         <link rel="preload" href="/styles.css" as="style" />
-        {/* <link rel="preload" href="/fonts.css" as="style" /> */}
 
         <link rel="preload" href="/img/logo.png" as="image" />
 
@@ -44,8 +43,7 @@ function Index({ preloadedState, path, csrfToken, settings }) {
         <link rel="preload" href="https://fonts.gstatic.com/s/roboto/v18/KFOkCnqEu92Fr1MmgVxIIzIXKMny.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
 
         <link rel="stylesheet" href="/styles.css" />
-        {/* <link rel="stylesheet" href="/fonts.css" /> */}
-        <title>{COMPANY_NAME}</title>
+        <title>{APP_NAME}</title>
         <meta name="description" content={siteDescription} />
         <meta name="keywords" content="advanced basics abx nodejs express react" />
         <meta name="robots" content="index,follow" />

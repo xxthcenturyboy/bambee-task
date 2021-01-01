@@ -7,7 +7,6 @@ services:
         image: postgres:13-alpine
         volumes:
           - "db-data:/var/lib/postgresql/data/pgdata"
-        #   - $PWD/scripts/db:/host-db
         environment:
             PGDATA: "/var/lib/postgresql/data/pgdata"
             POSTGRES_USER: "pguser"

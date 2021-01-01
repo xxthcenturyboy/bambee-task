@@ -4,8 +4,8 @@ import { Request } from 'express';
 import settings from 'settings';
 
 const { JWT_SECRET } = settings;
-const issuer = 'accounts.advancedbasics.com';
-const audience = 'advancedbasics.com';
+const issuer = 'accounts.bambeetask.com';
+const audience = 'bambeetask.com';
 
 export {
   getToken,

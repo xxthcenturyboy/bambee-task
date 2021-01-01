@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { COMPANY_NAME } from 'shared/constants';
+import { APP_NAME } from 'shared/constants';
 import theme from 'client/UI/theme';
 
 const Icon = styled.img`
@@ -8,8 +8,7 @@ const Icon = styled.img`
   display: none;
 
   @media (max-width: 768px) {
-    // width: 60px;
-    width: 100px;
+    width: 60px;
     display: flex;
   }
 `;
@@ -45,7 +44,7 @@ const Logo: React.FC<LogoProps> = (props) => {
   return (
     <LogoWrap>
       <Icon src="/img/logo.png" />
-      <Title>{COMPANY_NAME}</Title>
+      <Title>{APP_NAME}</Title>
     </LogoWrap>
   );
 };

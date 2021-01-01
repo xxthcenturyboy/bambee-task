@@ -1,11 +1,14 @@
-# NERP - Node, Express, React, Postgres
+# Bambee Task
 
-Opinionated Starter Template
+Homework for Bambee FS Dev
 
 ## Running the app
 
 #### Terminal #1:
 ```
+#install packages
+yarn install
+
 # download and build the docker images, and build the app
 docker-compose up -d
 
