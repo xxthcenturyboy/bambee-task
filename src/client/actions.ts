@@ -4,11 +4,13 @@ import { ActionType } from 'typesafe-actions';
 import * as appActions from 'client/App/actions';
 import * as authActions from 'client/Auth/actions';
 import * as userActions from 'client/User/actions';
+import * as taskActions from 'client/Task/actions';
 
 const allActions = {
   ...appActions,
   ...authActions,
-  ...userActions
+  ...userActions,
+  ...taskActions,
 };
 
 type AppAction = ActionType<typeof allActions>;
