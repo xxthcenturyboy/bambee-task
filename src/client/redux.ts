@@ -60,6 +60,8 @@ const reducer = combineReducers<RootState>(reducers);
 const initialState = {
   app: initialAppState,
   auth: initialAuthState,
+  taskList: initialTaskListState,
+  taskEdit: initialTaskEditState,
   user: initialUserState,
 };
 const mergedInitialState = merge(
