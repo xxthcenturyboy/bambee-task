@@ -16,7 +16,9 @@ export type TasksState = {
   fetchingTasksError: string;
   sortField: string;
   sortDir: SortDirection;
-  statusFilter: TaskStatus | 'All';
+  offset: number;
+  limit: number;
+  statusFilter: TaskStatus;
   filterText: string;
 };
 

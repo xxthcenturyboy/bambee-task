@@ -85,7 +85,7 @@ class Auth extends React.Component<Props, State> {
       if (signupResponse) {
         this.clearInputs();
         setProfile(signupResponse);
-        return redirect('/user');
+        return redirect('/tasks');
       }
       return this.setState({ error: 'Something went wrong signing you up.' });
     }
@@ -100,7 +100,7 @@ class Auth extends React.Component<Props, State> {
       if (loginResponse) {
         this.clearInputs();
         setProfile(loginResponse);
-        return redirect('/user');
+        return redirect('/tasks');
       }
       return this.setState({ error: 'Something went wrong logging you in.' });
     }
@@ -224,7 +224,7 @@ class Auth extends React.Component<Props, State> {
     const logo = '/img/logo.png';
 
     if (user) {
-      return <Redirect to="/user" />;
+      return <Redirect to="/tasks" />;
     }
 
     return (

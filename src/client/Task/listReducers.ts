@@ -13,6 +13,8 @@ export const initialState: TasksState = {
   fetchingTasksError: '',
   sortField: TaskPaginatonDefaults.sortField,
   sortDir: TaskPaginatonDefaults.sortDir,
+  offset: TaskPaginatonDefaults.offset,
+  limit: TaskPaginatonDefaults.limit,
   statusFilter: TaskStatus.INCOMPLETE,
   filterText: ''
 };
