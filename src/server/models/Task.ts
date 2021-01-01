@@ -10,8 +10,6 @@ import { TaskStatus } from 'shared/types/tasks';
 import { SortDirection } from 'shared/types/pagination';
 import moment from 'moment';
 
-console.log(Object.keys(TaskStatus));
-
 @Table({
   modelName: 'tasks',
   indexes: [],
@@ -71,13 +69,19 @@ export default class Task extends Model<Task> {
     return !!this.getDataValue('completedAt') && this.getDataValue('status') === TaskStatus.COMPLETE;
   }
 
-  static async createTask (userId: string, name?: string, description?: string, dueDate?: Date): Promise<Task> {
-    return await this.create({
+  static async createTask (userId: string, name?: string, description?: string, dueDate?: string): Promise<Task> {
+    const dateDue = dueDate ? new Date(dueDate) : undefined;
+
+    return await Task.create({
       userId,
       name,
       description,
-      dueDate
+      dueDate: dateDue
     });
+  }
+
+  static async findTaskById(taskId: string): Promise<Task> {
+    return await this.findByPk(taskId);
   }
 
   static async findAllIncompleteByUserIdPaginated(
@@ -165,6 +169,52 @@ export default class Task extends Model<Task> {
       where: {
         userId,
         deletedAt: null,
+      }
+    });
+  }
+
+  static async updateTask(taskId: string, name?: string, description?: string, dueDate?: string): Promise<Task | void> {
+    const task: Task = await this.findByPk(taskId);
+
+    if (!task) {
+      return;
+    }
+
+    if (name) {
+      task.setDataValue('name', name);
+    }
+
+    if (description) {
+      task.setDataValue('description', description);
+    }
+
+    if (dueDate) {
+      task.setDataValue('dueDate', new Date(dueDate));
+    }
+
+    await task.save();
+
+    return task;
+  }
+
+  static async markComplete(taskId: string): Promise<[number, Task]> {
+    return await Task.update({
+      completedAt: new Date(),
+      status: TaskStatus.COMPLETE
+    }, {
+      where: {
+        id: taskId
+      }
+    });
+  }
+
+  static async markDeleted(taskId: string): Promise<[number, Task]> {
+    return await Task.update({
+      deletedAt: new Date(),
+      status: TaskStatus.COMPLETE
+    }, {
+      where: {
+        id: taskId
       }
     });
   }
