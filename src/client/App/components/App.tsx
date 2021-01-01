@@ -22,6 +22,8 @@ import {
   NotFound,
   PrivateRoute,
   ScrollToTop,
+  TaskDetail,
+  TaskList,
   User,
 } from './LazyLoader';
 
@@ -81,6 +83,9 @@ class App extends React.Component<Props> {
               <Switch>
                 <Route exact path="/" component={Auth as any} />
                 <PrivateRoute exact path="/user" component={User as any} />
+                <PrivateRoute exact path="/tasks" component={TaskList as any} />
+                <PrivateRoute exact path="/task" component={TaskDetail as any} />
+                <PrivateRoute exact path="/task/:id" component={TaskDetail as any} />
                 <Route exact path="/404" component={NotFound as any} />
                 <Redirect from="*" to="/404" />
               </Switch>

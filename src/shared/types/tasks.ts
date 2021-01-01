@@ -2,8 +2,8 @@ import { Task } from 'client/Task/types';
 import { PaginationDefaults, SortDirection, PaginationResponse } from './pagination';
 
 export enum TaskStatus {
-  INCOMPLETE = 'Incomplete',
-  COMPLETE = 'Complete'
+  INCOMPLETE = 'INCOMPLETE',
+  COMPLETE = 'COMPLETE'
 }
 
 export const TaskPaginatonDefaults: PaginationDefaults = {

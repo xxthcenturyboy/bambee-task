@@ -21,6 +21,16 @@ export const ScrollToTop = Loadable({
   loading: (): any => null
 });
 
+export const TaskList = Loadable({
+  loader: (): any => import('client/Task/components/TaskList'),
+  loading: Loading
+});
+
+export const TaskDetail = Loadable({
+  loader: (): any => import('client/Task/components/TaskDetail'),
+  loading: Loading
+});
+
 export const User = Loadable({
   loader: (): any => import('client/User/components/User'),
   loading: Loading

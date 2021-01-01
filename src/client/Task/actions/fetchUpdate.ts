@@ -8,7 +8,7 @@ export const requestUpdate = createAsyncAction(
   'TASK:UPDATE_TASK_FAILURE'
 )<undefined, Task, string>();
 
-export default (taskId: string, name?: string, description?: string, dueDate?: Date) => async (dispatch) => {
+export default (taskId: string, name?: string, description?: string, dueDate?: string) => async (dispatch) => {
   dispatch(requestUpdate.request());
   try {
     const res = await updateTask(taskId, name, description, dueDate);

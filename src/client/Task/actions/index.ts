@@ -8,6 +8,9 @@ import setDateDue from './setDateDue';
 import setDescription from './setDescription';
 import setName from './setName';
 import setTask from './setTask';
+import setTaskStatus from './setTaskStatus';
+import setOffset from './setOffset';
+import setLimit from './setLimit';
 
 
 export default {
@@ -19,6 +22,9 @@ export default {
   requestUpdate,
   setDateDue,
   setDescription,
+  setLimit,
   setName,
+  setOffset,
   setTask,
+  setTaskStatus,
 };

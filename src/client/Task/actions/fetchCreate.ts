@@ -8,7 +8,7 @@ export const requestCreate = createAsyncAction(
   'TASK:CREATE_TASK_FAILURE'
 )<undefined, Task, string>();
 
-export default (name?: string, description?: string, dueDate?: Date) => async (dispatch) => {
+export default (name?: string, description?: string, dueDate?: string) => async (dispatch) => {
   dispatch(requestCreate.request());
   try {
     const res = await createTask(name, description, dueDate);

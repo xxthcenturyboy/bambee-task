@@ -46,7 +46,7 @@ export default class Task extends Model<Task> {
 
   @Default(TaskStatus.INCOMPLETE)
   @AllowNull(false)
-  @Column(DataType.ENUM(...Object.keys(TaskStatus)))
+  @Column(DataType.ENUM({ values: Object.keys(TaskStatus) }))
   status: string;
 
   @DeletedAt
@@ -94,9 +94,7 @@ export default class Task extends Model<Task> {
     return await this.findAndCountAll({
       where: {
         userId,
-        status: {
-          [Op.ne]: TaskStatus.COMPLETE,
-        },
+        status: TaskStatus.INCOMPLETE,
         deletedAt: null,
         completedAt: null,
       },
@@ -118,9 +116,7 @@ export default class Task extends Model<Task> {
     return await this.findAndCountAll({
       where: {
         userId,
-        status: {
-          [Op.eq]: TaskStatus.COMPLETE,
-        },
+        status: TaskStatus.COMPLETE,
         deletedAt: null,
       },
       order: [

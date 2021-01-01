@@ -3,25 +3,28 @@ import { SortDirection } from 'shared/types/pagination';
 
 export type Task = {
   id?: string;
-  name?: string;
-  description?: string;
-  dueDate?: Date;
-  createdAt?: Date;
+  name: string;
+  description: string;
+  dueDate: string;
+  createdAt?: string;
   status?: TaskStatus;
 };
 
 export type TasksState = {
   tasks: Task[];
+  totalTaskCount: number;
   isFetchingTasks: boolean;
   fetchingTasksError: string;
   sortField: string;
   sortDir: SortDirection;
-  statusFilter: TaskStatus | 'All';
+  offset: number;
+  limit: number;
+  statusFilter: TaskStatus;
   filterText: string;
 };
 
 export type EditTaskState = {
-  task: Task | null;
+  task: Task;
   isFetchingTask: boolean;
   fetchTaskError: string;
   isEditing: boolean;
