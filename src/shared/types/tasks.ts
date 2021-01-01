@@ -1,4 +1,5 @@
-import { PaginationDefaults, SortDirection } from './pagination';
+import { Task } from 'client/Task/types';
+import { PaginationDefaults, SortDirection, PaginationResponse } from './pagination';
 
 export enum TaskStatus {
   INCOMPLETE = 'Incomplete',
@@ -11,3 +12,7 @@ export const TaskPaginatonDefaults: PaginationDefaults = {
   sortField: 'dueDate',
   sortDir: SortDirection.ASC
 };
+
+export interface TaskListResponse extends PaginationResponse {
+  rows: Task[];
+}

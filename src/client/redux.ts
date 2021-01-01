@@ -5,6 +5,10 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import appReducer, { State as AppState, initialState as initialAppState } from 'client/App/reducers';
 import { State as AuthState } from 'client/Auth';
 import { State as UserState } from 'client/User';
+import {
+  TasksState as TaskListState,
+  EditTaskState as TaskEditState
+ } from 'client/Task';
 import merge from 'lodash/merge';
 import {
   useSelector as reduxUseSelector,
@@ -15,6 +19,8 @@ import {
 // reducers
 import authReducer, { initialState as initialAuthState } from 'client/Auth/reducers';
 import userReducer, { initialState as initialUserState } from 'client/User/reducers';
+import taskListReducer, { initialState as initialTaskListState } from 'client/Task/listReducers';
+import taskEditReducer, { initialState as initialTaskEditState } from 'client/Task/editReducers';
 import clientReducer from 'client/reducers';
 
 import { history } from './history';
@@ -31,6 +37,8 @@ export interface RootState extends StoreEnhancerState {
   auth: AuthState;
   form: any;
   router: RouterState;
+  taskList: TaskListState,
+  taskEdit: TaskEditState,
   user: UserState;
   client: any;
 }
@@ -40,6 +48,8 @@ export const reducers = {
   auth: authReducer,
   form: formReducer,
   router: connectRouter(history),
+  taskList: taskListReducer,
+  taskEdit: taskEditReducer,
   user: userReducer,
   client: clientReducer,
 };

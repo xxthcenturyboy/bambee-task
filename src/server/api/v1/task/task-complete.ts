@@ -1,19 +1,17 @@
 import { Request, Response } from 'express';
-import { Params } from 'shared/types/express';
 import {
   sendOK,
   sendBadRequest
 } from 'server/response';
 import Task from 'server/models/Task';
 
-interface DeleteParams extends Params {
+type RequestBody = {
   id: string;
-}
+};
 
 export default async function taskComplete(req: Request, res: Response) {
   try {
-    const { id: taskId } = req.params;
-
+    const { id: taskId } = req.body as RequestBody;
     if (!taskId) {
       throw new Error('No Task ID present.');
     }

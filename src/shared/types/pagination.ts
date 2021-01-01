@@ -9,3 +9,8 @@ export type PaginationDefaults = {
   sortField: string;
   sortDir: SortDirection;
 };
+
+export type PaginationResponse = {
+  count: number;
+  rows: any[];
+};

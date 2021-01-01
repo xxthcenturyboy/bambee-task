@@ -6,7 +6,7 @@ import {
 } from 'server/response';
 import Task from 'server/models/Task';
 import { SortDirection } from 'shared/types/pagination';
-import { TaskStatus, TaskPaginatonDefaults } from 'shared/types/tasks';
+import { TaskStatus, TaskPaginatonDefaults, TaskListResponse } from 'shared/types/tasks';
 
 interface ListParams extends Params {
   status: string;
@@ -34,7 +34,7 @@ export default async function taskDetail(req: Request, res: Response) {
     const limit: number = req.params.limit ? Number(req.params.limit) : TaskPaginatonDefaults.limit;
     const offset: number = req.params.offset ? Number(req.params.offset) : TaskPaginatonDefaults.offset;
 
-    let list: PaginationResponse = {
+    let list: TaskListResponse = {
       count: 0,
       rows: []
     };

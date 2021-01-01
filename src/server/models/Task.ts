@@ -6,7 +6,7 @@ import {
   Is, IsUrl, IsEmail, DeletedAt, Scopes,
 } from 'sequelize-typescript';
 import User from './User';
-import { TaskStatus } from 'shared/types/tasks';
+import { TaskStatus, TaskListResponse } from 'shared/types/tasks';
 import { SortDirection } from 'shared/types/pagination';
 import moment from 'moment';
 
@@ -90,7 +90,7 @@ export default class Task extends Model<Task> {
     sortDir: SortDirection,
     limit: number,
     offset: number
-  ): Promise<{count: number, rows: Task[]}> {
+  ): Promise<TaskListResponse> {
     return await this.findAndCountAll({
       where: {
         userId,
@@ -114,7 +114,7 @@ export default class Task extends Model<Task> {
     sortDir: SortDirection,
     limit: number,
     offset: number
-  ): Promise<{count: number, rows: Task[]}> {
+  ): Promise<TaskListResponse> {
     return await this.findAndCountAll({
       where: {
         userId,
@@ -137,7 +137,7 @@ export default class Task extends Model<Task> {
     sortDir: SortDirection,
     limit: number,
     offset: number
-  ): Promise<{count: number, rows: Task[]}> {
+  ): Promise<TaskListResponse> {
     return await this.findAndCountAll({
       where: {
         userId,
